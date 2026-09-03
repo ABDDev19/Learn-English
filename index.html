@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,215 +8,323 @@
   <title>English Bridge — Learn English</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header class="topbar">
-  <a class="brand" href="#home" id="brandLink" aria-label="Go to home">
-    <div class="logo">E</div>
-    <div>
-      <h1>English Bridge</h1>
-      <span>Learn • Speak • Listen</span>
-    </div>
-  </a>
-
-  <button id="mobileMenu" class="icon-btn" aria-label="Open menu">☰</button>
-
-  <nav id="nav">
-    <a class="nav-btn active" href="#home">Home</a>
-    <a class="nav-btn" href="#lessons">Lessons</a>
-    <a class="nav-btn" href="#vocabulary">Words</a>
-    <a class="nav-btn" href="#stories">Stories</a>
-    <a class="nav-btn" href="#quiz">Quiz</a>
-    <a class="nav-btn" href="#about">About</a>
-  </nav>
-</header>
-
-<main>
-  <!-- HOME -->
-  <section id="home" class="page active">
-    <div class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">LEARN • PRACTICE • SPEAK</span>
-        <h2>Build your English<br><strong>step by step.</strong></h2>
-        <p>Simple English lessons with Pashto meanings, everyday conversations, 400+ words, beginner stories and voice practice.</p>
-        <div class="hero-actions">
-          <a class="primary" href="#lessons">Start Learning →</a>
-          <a class="secondary" href="#stories">Listen to a Story</a>
-        </div>
-        <div class="mini-stats">
-          <div><b>5+</b><span>Core Lessons</span></div>
-          <div><b>400+</b><span>English Words</span></div>
-          <div><b>Voice</b><span>Story Practice</span></div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-glow"></div>
-        <img src="assets/english-kids.jpeg" alt="Three children reading English books">
-        <div class="floating-card card-top"><span>📖</span><div><b>Easy Lessons</b><small>Pashto support</small></div></div>
-        <div class="floating-card card-bottom"><span>🔊</span><div><b>Listen & Repeat</b><small>Story voice</small></div></div>
-      </div>
-    </div>
-
-    <div class="section-heading">
+  <header class="topbar">
+    <a class="brand" href="#home" id="brandLink" aria-label="Go to home">
+      <div class="logo">E</div>
       <div>
-        <span class="eyebrow">COURSE ROADMAP</span>
-        <h2>What you will learn</h2>
-        <p>Five focused lessons that build useful English step by step.</p>
+        <h1>English Bridge</h1>
+        <span>Learn • Speak • Listen</span>
       </div>
-      <a class="text-link" href="#lessons">View all lessons →</a>
-    </div>
-    <div id="homeLessonsPreview" class="roadmap-grid"></div>
+    </a>
 
-    <div class="section-heading split">
-      <div>
-        <span class="eyebrow">START HERE</span>
-        <h2>Learn in a simple way</h2>
-        <p>Use the website in a small daily routine: learn, listen, speak, and check yourself.</p>
-      </div>
-    </div>
-    <div id="homeHelpful" class="helpful-grid"></div>
-  </section>
+    <button id="mobileMenu" class="icon-btn" aria-label="Open menu">☰</button>
 
-  <!-- LESSONS -->
-  <section id="lessons" class="page">
-    <div class="section-heading">
-      <div><span class="eyebrow">LESSONS</span><h2>Units 1–5</h2><p>Each lesson has its own page so students can focus without distractions.</p></div>
-    </div>
-    <div id="lessonGrid" class="lesson-grid"></div>
-  </section>
+    <nav id="nav">
+      <a class="nav-btn active" href="#home">Home</a>
+      <a class="nav-btn" href="lessons/lesson.html?id=unit-1">Lessons</a>
+      <a class="nav-btn" href="#vocabulary">Words</a>
+      <a class="nav-btn" href="#stories">Stories</a>
+      <a class="nav-btn" href="#quiz">Quiz</a>
+      <a class="nav-btn" href="#about">About</a>
+    </nav>
+  </header>
 
-  <!-- LESSON DETAIL -->
-  <section id="lessonDetail" class="page detail-page">
-    <div id="lessonDetailContent"></div>
-  </section>
-
-  <!-- VOCABULARY -->
-  <section id="vocabulary" class="page">
-    <div class="section-heading">
-      <div><span class="eyebrow">VOCABULARY</span><h2>400+ useful English words</h2><p>Every word has a Pashto meaning. Word cards use changing colors for easier visual learning.</p></div>
-    </div>
-    <div class="tool-row">
-      <input id="wordSearch" class="search-input" type="search" placeholder="Search English or Pashto...">
-      <select id="wordCategory" class="select-input"><option value="all">All categories</option></select>
-      <button id="randomWordBtn" class="secondary">🎲 Random Word</button>
-    </div>
-    <div id="randomWord" class="random-word hidden"></div>
-    <div id="wordGrid" class="word-grid"></div>
-  </section>
-
-  <!-- CONVERSATIONS -->
-  <section id="conversations" class="page">
-    <div class="section-heading">
-      <div><span class="eyebrow">SPEAKING</span><h2>Introduction conversations</h2><p>Read, listen and repeat.</p></div>
-    </div>
-    <div id="conversationFilters" class="conversation-filters"></div>
-    <div id="conversationGrid" class="conversation-grid"></div>
-  </section>
-
-  <!-- STORIES -->
-  <section id="stories" class="page">
-    <div class="section-heading">
-      <div><span class="eyebrow">STORIES + VOICE</span><h2>Basic English stories</h2><p>Use the built-in browser voice to listen and practice. The Web Speech API provides speech synthesis in supported browsers.</p></div>
-    </div>
-    <div id="storyGrid" class="story-grid"></div>
-  </section>
-
-  <!-- QUIZ -->
-  <section id="quiz" class="page">
-    <div class="quiz-shell">
-      <div id="quizIntro" class="quiz-intro">
-        <span class="eyebrow">RANDOM PRACTICE</span>
-        <h2>Test your English</h2>
-        <p>Choose a quiz length. Questions are mixed from Units 1–5 and vocabulary.</p>
-        <div class="quiz-options">
-          <button class="primary" data-quiz-length="10">10 Questions</button>
-          <button class="secondary" data-quiz-length="15">15 Questions</button>
+  <main>
+    <!-- HOME -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">LEARN • PRACTICE • SPEAK</span>
+          <h2>Build your English<br><strong>step by step.</strong></h2>
+          <p>Simple English lessons with Pashto meanings, everyday conversations, 400+ words, beginner stories and voice
+            practice.</p>
+          <div class="hero-actions">
+            <a class="primary" href="#lessons">Start Learning →</a>
+            <a class="secondary" href="#stories">Listen to a Story</a>
+          </div>
+          <div class="mini-stats">
+            <div><b>35+</b><span>Core Lessons</span></div>
+            <div><b>400+</b><span>English Words</span></div>
+            <div><b>Voice</b><span>Story Practice</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-glow"></div>
+          <img src="assets/english-kids.jpeg" alt="Three children reading English books">
+          <div class="floating-card card-top"><span>📖</span>
+            <div><b>Easy Lessons</b><small>Pashto support</small></div>
+          </div>
+          <div class="floating-card card-bottom"><span>🔊</span>
+            <div><b>Listen & Repeat</b><small>Story voice</small></div>
+          </div>
         </div>
       </div>
-      <div id="quizArea" class="hidden">
-        <div class="quiz-top">
-          <div><span class="eyebrow">QUESTION <span id="qNumber">1</span></span><div class="quiz-progress"><span id="quizProgress"></span></div></div>
-          <div class="score-pill">Score: <span id="liveScore">0</span></div>
+
+      <!-- EXPLORE LESSONS -->
+      <div class="explore-section">
+
+        <div class="explore-copy">
+
+          <span class="eyebrow">EXPLORE ENGLISH</span>
+
+          <h2>
+            Explore More.<br>
+            <strong>Learn English With Me.</strong>
+          </h2>
+
+          <p>
+            Learn English step by step through simple lessons,
+            useful vocabulary, real conversations, stories,
+            listening practice, and quizzes.
+          </p>
+
+          <div class="explore-actions">
+            <a class="primary" href="#lessons">
+              Explore Lessons →
+            </a>
+
+            <a class="secondary" href="#vocabulary">
+              Learn New Words
+            </a>
+          </div>
+
         </div>
-        <div class="question-card">
-          <div class="unit-tag" id="questionUnit">Unit 1</div>
-          <h2 id="questionText"></h2>
-          <div id="options" class="options"></div>
-          <div id="feedback" class="feedback hidden"></div>
-          <button id="nextBtn" class="primary next hidden">Next Question →</button>
+
+        <div class="explore-visual">
+
+          <div class="explore-circle">
+            <span>35+</span>
+            <small>English<br>Lessons</small>
+          </div>
+
+          <div class="explore-item explore-item-one">
+            <div class="explore-icon">📖</div>
+
+            <div class="explore-item-content">
+              <span class="explore-label">LESSON</span>
+              <b>Learn</b>
+              <small>Simple lessons with Pashto support</small>
+            </div>
+
+            <span class="explore-arrow">→</span>
+          </div>
+
+
+          <div class="explore-item explore-item-two">
+            <div class="explore-icon">🗣️</div>
+
+            <div class="explore-item-content">
+              <span class="explore-label">SPEAKING</span>
+              <b>Speak</b>
+              <small>Practice useful everyday conversations</small>
+            </div>
+
+            <span class="explore-arrow">→</span>
+          </div>
+
+
+          <div class="explore-item explore-item-three">
+            <div class="explore-icon">🎧</div>
+
+            <div class="explore-item-content">
+              <span class="explore-label">LISTENING</span>
+              <b>Listen</b>
+              <small>Improve listening with stories and practice</small>
+            </div>
+
+            <span class="explore-arrow">→</span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="section-heading split">
+        <div>
+          <span class="eyebrow">START HERE</span>
+          <h2>Learn in a simple way</h2>
+          <p>Use the website in a small daily routine: learn, listen, speak, and check yourself.</p>
         </div>
       </div>
-      <div id="quizResult" class="result hidden">
-        <div class="result-circle"><span id="resultScore">0</span><small>/ <span id="resultTotal">10</span></small></div>
-        <span class="eyebrow">QUIZ COMPLETE</span>
-        <h2 id="resultTitle">Good work!</h2>
-        <p id="resultMessage"></p>
-        <div class="result-actions">
-          <button id="tryAgain" class="primary">Try Again</button>
-          <a class="secondary" href="#lessons">Review Lessons</a>
+      <div id="homeHelpful" class="helpful-grid"></div>
+    </section>
+
+    <!-- LESSONS -->
+
+
+    <!-- LESSON DETAIL -->
+
+
+    <!-- VOCABULARY -->
+    <section id="vocabulary" class="page">
+      <div class="section-heading">
+        <div><span class="eyebrow">VOCABULARY</span>
+          <h2>400+ useful English words</h2>
+          <p>Every word has a Pashto meaning. Word cards use changing colors for easier visual learning.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="page">
-    <div class="about-card">
-      <span class="eyebrow">ABOUT ENGLISH BRIDGE</span>
-      <h2>A friendly learning space for beginner English.</h2>
-      <p>English Bridge is designed to make English practice simple, practical, and consistent. Students can study the lessons, build vocabulary with Pashto meanings, listen to stories and conversations, practice speaking, and test their knowledge.</p>
-
-      <div class="helpful-grid about-helpful">
-        <article class="helpful-card">
-          <span class="helpful-icon">📖</span>
-          <h3>How to use the lessons</h3>
-          <p>Start with Unit 1 and move forward one lesson at a time. Read the explanation, study the examples, then practice the topic in the quiz.</p>
-        </article>
-        <article class="helpful-card">
-          <span class="helpful-icon">🗣️</span>
-          <h3>How to practice speaking</h3>
-          <p>Open a conversation, read each line aloud, listen to the voice, and repeat it. Practice both sides of the conversation with a partner when possible.</p>
-        </article>
-        <article class="helpful-card">
-          <span class="helpful-icon">🎧</span>
-          <h3>How to improve listening</h3>
-          <p>Listen to a story or conversation more than once. First listen for the general meaning, then listen again and repeat the sentences you hear.</p>
-        </article>
-        <article class="helpful-card">
-          <span class="helpful-icon">🧠</span>
-          <h3>How to remember words</h3>
-          <p>Learn a small group of words each day. Say the English word, check the Pashto meaning, read the example, and use the word in your own sentence.</p>
-        </article>
-        <article class="helpful-card">
-          <span class="helpful-icon">⏱️</span>
-          <h3>A simple daily routine</h3>
-          <p>Try 10 minutes of vocabulary, 10 minutes of a lesson, and 10 minutes of speaking or listening. Regular short practice is easier to maintain than one long session.</p>
-        </article>
-        <article class="helpful-card">
-          <span class="helpful-icon">👨‍🏫</span>
-          <h3>For teachers</h3>
-          <p>Use the conversations for pair work, the vocabulary cards for quick review, the stories for listening practice, and the quizzes for checking progress.</p>
-        </article>
+      <div class="tool-row">
+        <input id="wordSearch" class="search-input" type="search" placeholder="Search English or Pashto...">
+        <select id="wordCategory" class="select-input">
+          <option value="all">All categories</option>
+        </select>
+        <button id="randomWordBtn" class="secondary">🎲 Random Word</button>
       </div>
+      <div id="randomWord" class="random-word hidden"></div>
+      <div id="wordGrid" class="word-grid"></div>
+    </section>
 
-      <div class="feature-list">
-        <div><span>01</span><div><b>Separate data</b><p>Edit lessons, words, stories and quizzes in the <code>data</code> folder.</p></div></div>
-        <div><span>02</span><div><b>Dedicated lesson pages</b><p>Each unit opens as its own lesson URL instead of returning to the landing page.</p></div></div>
-        <div><span>03</span><div><b>Voice practice</b><p>Stories and conversations can be read aloud using browser speech synthesis.</p></div></div>
-        <div><span>04</span><div><b>Pashto support</b><p>Vocabulary and key lesson explanations can include Pashto meanings for easier understanding.</p></div></div>
+    <!-- CONVERSATIONS -->
+    <section id="conversations" class="page">
+      <div class="section-heading">
+        <div><span class="eyebrow">SPEAKING</span>
+          <h2>Introduction conversations</h2>
+          <p>Read, listen and repeat.</p>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+      <div id="conversationFilters" class="conversation-filters"></div>
+      <div id="conversationGrid" class="conversation-grid"></div>
+    </section>
 
-<footer>
-  <div><b>English Bridge</b> • Beginner English • Pashto Support</div>
-  <div class="footer-links"><a href="#about">About</a><a href="#home">Home</a></div>
-</footer>
+    <!-- STORIES -->
+    <section id="stories" class="page">
+      <div class="section-heading">
+        <div><span class="eyebrow">STORIES + VOICE</span>
+          <h2>Basic English stories</h2>
+          <p>Use the built-in browser voice to listen and practice. The Web Speech API provides speech synthesis in
+            supported browsers.</p>
+        </div>
+      </div>
+      <div id="storyGrid" class="story-grid"></div>
+    </section>
 
-<script src="data/config.js"></script>
-<script src="data/lessons.js"></script>
-<script src="data/vocabulary.js"></script>
-<script src="data/quizzes.js"></script>
-<script src="script.js"></script>
+    <!-- QUIZ -->
+    <section id="quiz" class="page">
+      <div class="quiz-shell">
+        <div id="quizIntro" class="quiz-intro">
+          <span class="eyebrow">RANDOM PRACTICE</span>
+          <h2>Test your English</h2>
+          <p>Choose a quiz length. Questions are mixed from Units 1–5 and vocabulary.</p>
+          <div class="quiz-options">
+            <button class="primary" data-quiz-length="10">10 Questions</button>
+            <button class="secondary" data-quiz-length="15">15 Questions</button>
+          </div>
+        </div>
+        <div id="quizArea" class="hidden">
+          <div class="quiz-top">
+            <div><span class="eyebrow">QUESTION <span id="qNumber">1</span></span>
+              <div class="quiz-progress"><span id="quizProgress"></span></div>
+            </div>
+            <div class="score-pill">Score: <span id="liveScore">0</span></div>
+          </div>
+          <div class="question-card">
+            <div class="unit-tag" id="questionUnit">Unit 1</div>
+            <h2 id="questionText"></h2>
+            <div id="options" class="options"></div>
+            <div id="feedback" class="feedback hidden"></div>
+            <button id="nextBtn" class="primary next hidden">Next Question →</button>
+          </div>
+        </div>
+        <div id="quizResult" class="result hidden">
+          <div class="result-circle"><span id="resultScore">0</span><small>/ <span id="resultTotal">10</span></small>
+          </div>
+          <span class="eyebrow">QUIZ COMPLETE</span>
+          <h2 id="resultTitle">Good work!</h2>
+          <p id="resultMessage"></p>
+          <div class="result-actions">
+            <button id="tryAgain" class="primary">Try Again</button>
+            <a class="secondary" href="#lessons">Review Lessons</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="page">
+      <div class="about-card">
+        <span class="eyebrow">ABOUT ENGLISH BRIDGE</span>
+        <h2>A friendly learning space for beginner English.</h2>
+        <p>English Bridge is designed to make English practice simple, practical, and consistent. Students can study the
+          lessons, build vocabulary with Pashto meanings, listen to stories and conversations, practice speaking, and
+          test their knowledge.</p>
+
+        <div class="helpful-grid about-helpful">
+          <article class="helpful-card">
+            <span class="helpful-icon">📖</span>
+            <h3>How to use the lessons</h3>
+            <p>Start with Unit 1 and move forward one lesson at a time. Read the explanation, study the examples, then
+              practice the topic in the quiz.</p>
+          </article>
+          <article class="helpful-card">
+            <span class="helpful-icon">🗣️</span>
+            <h3>How to practice speaking</h3>
+            <p>Open a conversation, read each line aloud, listen to the voice, and repeat it. Practice both sides of the
+              conversation with a partner when possible.</p>
+          </article>
+          <article class="helpful-card">
+            <span class="helpful-icon">🎧</span>
+            <h3>How to improve listening</h3>
+            <p>Listen to a story or conversation more than once. First listen for the general meaning, then listen again
+              and repeat the sentences you hear.</p>
+          </article>
+          <article class="helpful-card">
+            <span class="helpful-icon">🧠</span>
+            <h3>How to remember words</h3>
+            <p>Learn a small group of words each day. Say the English word, check the Pashto meaning, read the example,
+              and use the word in your own sentence.</p>
+          </article>
+          <article class="helpful-card">
+            <span class="helpful-icon">⏱️</span>
+            <h3>A simple daily routine</h3>
+            <p>Try 10 minutes of vocabulary, 10 minutes of a lesson, and 10 minutes of speaking or listening. Regular
+              short practice is easier to maintain than one long session.</p>
+          </article>
+          <article class="helpful-card">
+            <span class="helpful-icon">👨‍🏫</span>
+            <h3>For teachers</h3>
+            <p>Use the conversations for pair work, the vocabulary cards for quick review, the stories for listening
+              practice, and the quizzes for checking progress.</p>
+          </article>
+        </div>
+
+        <div class="feature-list">
+          <div><span>01</span>
+            <div><b>Separate data</b>
+              <p>Edit lessons, words, stories and quizzes in the <code>data</code> folder.</p>
+            </div>
+          </div>
+          <div><span>02</span>
+            <div><b>Dedicated lesson pages</b>
+              <p>Each unit opens as its own lesson URL instead of returning to the landing page.</p>
+            </div>
+          </div>
+          <div><span>03</span>
+            <div><b>Voice practice</b>
+              <p>Stories and conversations can be read aloud using browser speech synthesis.</p>
+            </div>
+          </div>
+          <div><span>04</span>
+            <div><b>Pashto support</b>
+              <p>Vocabulary and key lesson explanations can include Pashto meanings for easier understanding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>English Bridge</b> • Beginner English • Pashto Support</div>
+    <div class="footer-links"><a href="#about">About</a><a href="#home">Home</a></div>
+  </footer>
+
+  <script src="data/config.js"></script>
+  <script src="data/lessons.js"></script>
+  <script src="data/vocabulary.js"></script>
+  <script src="data/quizzes.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>

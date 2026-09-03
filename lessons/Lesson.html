@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="English Bridge English lesson with Pashto support.">
+
+    <title>English Bridge — Lesson</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="standalone-lesson">
+
+    <header class="topbar">
+
+        <a class="brand" href="../index.html#home" aria-label="Go to home">
+            <div class="logo">E</div>
+
+            <div>
+                <h1>English Bridge</h1>
+                <span>Learn • Speak • Listen</span>
+            </div>
+        </a>
+
+        <nav>
+            <a class="nav-btn" href="../index.html#home">Home</a>
+            <a class="nav-btn" href="../index.html#lessons">Lessons</a>
+            <a class="nav-btn" href="../index.html#vocabulary">Words</a>
+            <a class="nav-btn" href="../index.html#stories">Stories</a>
+            <a class="nav-btn" href="../index.html#quiz">Quiz</a>
+            <a class="nav-btn" href="../index.html#about">About</a>
+        </nav>
+
+    </header>
+
+
+    <main class="lesson-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="lesson-sidebar">
+
+            <div class="sidebar-header">
+                <span class="eyebrow">ENGLISH BRIDGE</span>
+                <h2>Lessons</h2>
+            </div>
+
+            <input type="search" id="lessonSearch" class="lesson-search" placeholder="Search lessons...">
+
+            <div id="lessonList" class="lesson-list"></div>
+
+        </aside>
+
+
+        <!-- RIGHT CONTENT -->
+        <section class="lesson-content">
+
+            <div id="lessonPage">
+
+                <div class="lesson-loading">
+                    Loading lesson...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <div>
+            <b>English Bridge</b> • Beginner English • Pashto Support
+        </div>
+
+        <div class="footer-links">
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#home">Home</a>
+        </div>
+    </footer>
+
+
+    <script src="../data/config.js"></script>
+    <script src="../data/lessons.js"></script>
+
+    <script>
+
+        const params = new URLSearchParams(window.location.search);
+        let lessonId = params.get("id") || "unit-1";
+
+        const lessonPage = document.getElementById("lessonPage");
+        const lessonList = document.getElementById("lessonList");
+        const lessonSearch = document.getElementById("lessonSearch");
+
+
+        // --------------------------------------------------
+        // FIND CURRENT LESSON
+        // --------------------------------------------------
+
+        function getCurrentLesson() {
+
+            return LESSONS.find(lesson => lesson.id === lessonId);
+
+        }
+
+
+        // --------------------------------------------------
+        // RENDER SIDEBAR
+        // --------------------------------------------------
+
+        function renderLessonList(search = "") {
+
+            const searchText = search.toLowerCase().trim();
+
+            const filteredLessons = LESSONS.filter((lesson) => {
+
+                return (
+                    lesson.title.toLowerCase().includes(searchText) ||
+                    lesson.unit.toLowerCase().includes(searchText) ||
+                    lesson.topic.toLowerCase().includes(searchText)
+                );
+
+            });
+
+
+            lessonList.innerHTML = filteredLessons.map((lesson, index) => {
+
+                const active = lesson.id === lessonId ? "active" : "";
+
+                return `
+      <a
+        class="lesson-sidebar-item ${active}"
+        href="lesson.html?id=${lesson.id}"
+      >
+
+        <span class="sidebar-number">
+          ${String(LESSONS.indexOf(lesson) + 1).padStart(2, "0")}
+        </span>
+
+        <div>
+          <small>${lesson.unit}</small>
+          <strong>${lesson.title}</strong>
+        </div>
+
+      </a>
+    `;
+
+            }).join("");
+
+
+            if (!filteredLessons.length) {
+
+                lessonList.innerHTML = `
+      <div class="no-lessons">
+        No lessons found.
+      </div>
+    `;
+
+            }
+
+        }
+
+
+        // --------------------------------------------------
+        // RULE RENDERER
+        // SUPPORTS OLD + NEW DATA FORMAT
+        // --------------------------------------------------
+
+        function renderRule(rule) {
+
+            // Old format:
+            // "Use in for something inside a place."
+
+            if (typeof rule === "string") {
+
+                return `
+      <div class="lesson-rule">
+
+        <div class="rule-en">
+          <span>•</span>
+          <span>${rule}</span>
+        </div>
+
+      </div>
+    `;
+
+            }
+
+
+            // New format:
+            // {
+            //   english: "...",
+            //   pashto: "..."
+            // }
+
+            return `
+    <div class="lesson-rule">
+
+      <div class="rule-en">
+        <span>•</span>
+        <span>${rule.english}</span>
+      </div>
+
+      ${rule.pashto
+                    ? `<div class="rule-ps" dir="rtl">${rule.pashto}</div>`
+                    : ""
+                }
+
+    </div>
+  `;
+
+        }
+
+
+        // --------------------------------------------------
+        // EXAMPLE RENDERER
+        // SUPPORTS OLD + NEW DATA FORMAT
+        // --------------------------------------------------
+
+        function renderExample(example) {
+
+            // Old format
+
+            if (typeof example === "string") {
+
+                return `
+      <div class="lesson-example">
+
+        <div class="example-en">
+          ${example}
+        </div>
+
+      </div>
+    `;
+
+            }
+
+
+            // New format
+
+            return `
+    <div class="lesson-example">
+
+      <div class="example-en">
+        ${example.english}
+      </div>
+
+      ${example.pashto
+                    ? `<div class="example-ps" dir="rtl">
+              ${example.pashto}
+            </div>`
+                    : ""
+                }
+
+    </div>
+  `;
+
+        }
+
+
+        // --------------------------------------------------
+        // RENDER LESSON
+        // --------------------------------------------------
+
+        function renderLesson() {
+
+            const lesson = getCurrentLesson();
+
+
+            if (!lesson) {
+
+                lessonPage.innerHTML = `
+      <div class="lesson-not-found">
+
+        <span class="eyebrow">ERROR</span>
+
+        <h1>Lesson not found</h1>
+
+        <p>
+          We could not find the lesson you requested.
+        </p>
+
+        <a
+          class="primary"
+          href="../index.html#lessons"
+        >
+          ← Back to Lessons
+        </a>
+
+      </div>
+    `;
+
+                return;
+            }
+
+
+            const lessonIndex = LESSONS.findIndex(
+                lessonItem => lessonItem.id === lessonId
+            );
+
+
+            const previousLesson =
+                lessonIndex > 0
+                    ? LESSONS[lessonIndex - 1]
+                    : null;
+
+
+            const nextLesson =
+                lessonIndex < LESSONS.length - 1
+                    ? LESSONS[lessonIndex + 1]
+                    : null;
+
+
+            document.title =
+                `English Bridge — ${lesson.unit}: ${lesson.title}`;
+
+
+            lessonPage.innerHTML = `
+
+    <!-- HERO -->
+
+    <div class="lesson-hero">
+
+      <a
+        class="back-link"
+        href="../index.html#lessons"
+      >
+        ← Back to Lessons
+      </a>
+
+      <span class="eyebrow">
+        ${lesson.unit}
+      </span>
+
+      <h1>
+        ${lesson.title}
+      </h1>
+
+      <p class="lesson-topic">
+        ${lesson.topic}
+      </p>
+
+      ${lesson.intro
+                    ? `<p class="lesson-intro">
+              ${lesson.intro}
+            </p>`
+                    : ""
+                }
+
+    </div>
+
+
+    <!-- LESSON SECTIONS -->
+
+    <div class="lesson-sections">
+
+      ${lesson.sections.map((section, sectionIndex) => `
+
+        <article class="lesson-section">
+
+          <div class="section-number">
+            ${String(sectionIndex + 1).padStart(2, "0")}
+          </div>
+
+          <div class="section-main">
+
+            <h2>
+              ${section.title}
+            </h2>
+
+
+            ${section.pashto
+                        ? `
+                  <div
+                    class="section-pashto"
+                    dir="rtl"
+                  >
+                    ${section.pashto}
+                  </div>
+                `
+                        : ""
+                    }
+
+
+            ${section.rules && section.rules.length
+                        ? `
+
+                  <div class="lesson-block">
+
+                    <h3>
+                      Grammar Rules
+                    </h3>
+
+                    <div class="rules-list">
+
+                      ${section.rules
+                            .map(renderRule)
+                            .join("")}
+
+                    </div>
+
+                  </div>
+
+                `
+                        : ""
+                    }
+
+
+            ${section.examples && section.examples.length
+                        ? `
+
+                  <div class="lesson-block">
+
+                    <h3>
+                      Examples
+                    </h3>
+
+                    <div class="examples-list">
+
+                      ${section.examples
+                            .map(renderExample)
+                            .join("")}
+
+                    </div>
+
+                  </div>
+
+                `
+                        : ""
+                    }
+
+          </div>
+
+        </article>
+
+      `).join("")}
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="lesson-navigation">
+
+      ${previousLesson
+                    ? `
+            <a
+              class="lesson-nav-card previous"
+              href="lesson.html?id=${previousLesson.id}"
+            >
+
+              <span>← Previous Lesson</span>
+
+              <strong>
+                ${previousLesson.title}
+              </strong>
+
+            </a>
+          `
+                    : `<div></div>`
+                }
+
+
+      ${nextLesson
+                    ? `
+            <a
+              class="lesson-nav-card next"
+              href="lesson.html?id=${nextLesson.id}"
+            >
+
+              <span>Next Lesson →</span>
+
+              <strong>
+                ${nextLesson.title}
+              </strong>
+
+            </a>
+          `
+                    : `
+            <a
+              class="lesson-nav-card next"
+              href="../index.html#quiz"
+            >
+
+              <span>Finish Lessons →</span>
+
+              <strong>
+                Take the Quiz
+              </strong>
+
+            </a>
+          `
+                }
+
+    </div>
+
+
+    <!-- BOTTOM ACTIONS -->
+
+    <div class="lesson-actions">
+
+      <a
+        class="primary"
+        href="../index.html#quiz"
+      >
+        Practice with Quiz →
+      </a>
+
+      <a
+        class="secondary"
+        href="../index.html#lessons"
+      >
+        All Lessons
+      </a>
+
+    </div>
+
+  `;
+
+        }
+
+
+        // --------------------------------------------------
+        // SEARCH
+        // --------------------------------------------------
+
+        lessonSearch.addEventListener("input", () => {
+
+            renderLessonList(lessonSearch.value);
+
+        });
+
+
+        
+        renderLessonList();
+        renderLesson();
+
+    </script>
+
+</body>
+
+</html>
