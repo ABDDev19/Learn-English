@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Bridge — Lesson</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="standalone-lesson">
+<header class="topbar">
+  <a class="brand" href="../index.html#home" aria-label="Go to home">
+    <div class="logo">E</div>
+    <div><h1>English Bridge</h1><span>Learn • Speak • Listen</span></div>
+  </a>
+  <nav>
+    <a class="nav-btn" href="../index.html#home">Home</a>
+    <a class="nav-btn" href="../index.html#lessons">Lessons</a>
+    <a class="nav-btn" href="../index.html#vocabulary">Words</a>
+    <a class="nav-btn" href="../index.html#conversations">Conversations</a>
+    <a class="nav-btn" href="../index.html#stories">Stories</a>
+    <a class="nav-btn" href="../index.html#quiz">Quiz</a>
+  </nav>
+</header>
+<main>
+  <div id="lessonPage"></div>
+</main>
+<footer><b>English Bridge</b> • Beginner English • Pashto Support</footer>
+<script src="../data/config.js"></script>
+<script src="../data/lessons.js"></script>
+<script>
+const lessonId = "unit-5";
+const lesson = LESSONS.find(l=>l.id===lessonId);
+const root = document.getElementById("lessonPage");
+
+if(!lesson){
+  root.innerHTML = '<div class="lesson-section"><h2>Lesson not found</h2><p>Please return to the lessons page.</p><a class="primary" href="../index.html#lessons">Back to Lessons</a></div>';
+}else{
+  document.title = "English Bridge — " + lesson.unit + " " + lesson.title;
+  root.innerHTML = `
+    <div class="detail-hero">
+      <a class="back-link" href="../index.html#lessons">← Back to Lessons</a>
+      <span class="eyebrow">${lesson.unit}</span>
+      <h2>${lesson.title}</h2>
+      <p>${lesson.intro}</p>
+    </div>
+    ${lesson.sections.map(s=>`
+      <section class="lesson-section">
+        <h3>${s.title}</h3>
+        <div class="pashto">${s.pashto}</div>
+        ${s.rules.map(r=>`<div class="rule">• ${r}</div>`).join("")}
+        <h4 style="margin-top:18px">Examples</h4>
+        ${s.examples.map(e=>`<div class="example">${e}</div>`).join("")}
+      </section>`).join("")}
+    <div class="lesson-next-actions">
+      <a class="primary" href="../index.html#quiz">Practice with Quiz →</a>
+      <a class="secondary" href="../index.html#lessons">All Lessons</a>
+    </div>`;
+}
+</script>
+</body>
+</html>

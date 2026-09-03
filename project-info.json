@@ -1,0 +1,17 @@
+{
+  "project": "English Bridge",
+  "version": "3.0",
+  "vocabulary_count": 562,
+  "lesson_count": 5,
+  "conversation_count": 10,
+  "topics_removed": true,
+  "open_library_removed": true,
+  "dedicated_lesson_pages": [
+    "lessons/unit-1.html",
+    "lessons/unit-2.html",
+    "lessons/unit-3.html",
+    "lessons/unit-4.html",
+    "lessons/unit-5.html"
+  ],
+  "data_separated": true
+}
