@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Starter — Learn English</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">E</div>
+    <div><h1>English Starter</h1><span>English • Pashto • Practice</span></div>
+  </div>
+  <button id="mobileMenu" class="icon-btn" aria-label="Open menu">☰</button>
+  <nav id="nav">
+    <button class="nav-btn active" data-page="home">Home</button>
+    <button class="nav-btn" data-page="lessons">Lessons</button>
+    <button class="nav-btn" data-page="vocabulary">Vocabulary</button>
+    <button class="nav-btn" data-page="tenses">Tenses</button>
+    <button class="nav-btn" data-page="quiz">Quiz</button>
+    <button class="nav-btn" data-page="about">About</button>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">LEARN • PRACTICE • CHECK</span>
+      <h2>Build your English<br><strong>step by step.</strong></h2>
+      <p>Learn lessons with Pashto definitions, build vocabulary, study tenses, and practice with randomized quizzes.</p>
+      <div class="hero-actions">
+        <button class="primary" onclick="showPage('lessons')">Start Learning →</button>
+        <button class="secondary" onclick="showPage('vocabulary')">Learn Words</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="book-icon">📘</div>
+      <h3 id="homeUnitCount">Units 1–5</h3>
+      <p>Lessons • Vocabulary • Tenses • Quizzes</p>
+      <div class="progress"><span id="homeProgress"></span></div>
+      <small id="homeWordCount">300+ vocabulary words</small>
+    </div>
+  </div>
+
+  <div class="section-heading">
+    <div><span class="eyebrow">COURSE PREVIEW</span><h2>What you can learn</h2></div>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="feature-icon">📚</div><h3>Book Lessons</h3><p>Lessons can be added separately without changing the main website code.</p><button onclick="showPage('lessons')">View Lessons →</button></div>
+    <div class="feature-card"><div class="feature-icon">🗣️</div><h3>Vocabulary</h3><p>English words with Pashto meanings and examples.</p><button onclick="showPage('vocabulary')">View Words →</button></div>
+    <div class="feature-card"><div class="feature-icon">⏳</div><h3>Tenses</h3><p>Simple tense explanations in English and Pashto. Example sentences stay in English.</p><button onclick="showPage('tenses')">Study Tenses →</button></div>
+    <div class="feature-card"><div class="feature-icon">🎯</div><h3>Practice Quiz</h3><p>Random lesson and vocabulary questions with instant feedback.</p><button onclick="showPage('quiz')">Take Quiz →</button></div>
+  </div>
+</section>
+
+<section id="lessons" class="page">
+  <div class="section-heading">
+    <div><span class="eyebrow">LESSONS</span><h2>Book Lessons</h2><p>Lesson content is stored separately in <b>data/lessons.js</b>.</p></div>
+  </div>
+  <div id="lessonGrid" class="lesson-grid"></div>
+  <div id="lessonDetail" class="lesson-detail hidden"></div>
+</section>
+
+<section id="vocabulary" class="page">
+  <div class="section-heading">
+    <div><span class="eyebrow">VOCABULARY</span><h2>English Words + پښتو</h2><p>Study English words with Pashto meanings and examples.</p></div>
+  </div>
+  <div class="vocab-tools">
+    <input id="vocabSearch" type="search" placeholder="Search English or Pashto...">
+    <button class="secondary" onclick="showPage('quiz'); startQuiz('vocabulary',10)">Vocabulary Quiz</button>
+  </div>
+  <div id="vocabGrid" class="vocab-grid"></div>
+</section>
+
+<section id="tenses" class="page">
+  <div class="section-heading">
+    <div><span class="eyebrow">TENSES</span><h2>English Tenses</h2><p>Definitions include Pashto. Example sentences are kept in English.</p></div>
+  </div>
+  <div id="tenseGrid" class="tense-grid"></div>
+</section>
+
+<section id="quiz" class="page">
+  <div class="quiz-shell">
+    <div class="quiz-intro" id="quizIntro">
+      <span class="eyebrow">RANDOM PRACTICE</span>
+      <h2>Test your English</h2>
+      <p>Choose a quiz category and number of questions. Questions are selected randomly.</p>
+      <div class="quiz-category">
+        <button class="category-btn active" onclick="setQuizCategory('all',this)">All</button>
+        <button class="category-btn" onclick="setQuizCategory('lesson',this)">Lessons</button>
+        <button class="category-btn" onclick="setQuizCategory('vocabulary',this)">Vocabulary</button>
+      </div>
+      <div class="quiz-options">
+        <button class="primary" onclick="startQuiz(selectedQuizCategory,10)">10 Questions</button>
+        <button class="secondary" onclick="startQuiz(selectedQuizCategory,15)">15 Questions</button>
+      </div>
+      <div class="quiz-note">Vocabulary questions test English words and their Pashto meanings. Lesson questions test the material in your book.</div>
+    </div>
+
+    <div id="quizArea" class="hidden">
+      <div class="quiz-top">
+        <div><span class="eyebrow">QUESTION <span id="qNumber">1</span></span><div class="quiz-progress"><span id="quizProgress"></span></div></div>
+        <div class="score-pill">Score: <span id="liveScore">0</span></div>
+      </div>
+      <div class="question-card">
+        <div class="unit-tag" id="questionUnit">Lesson</div>
+        <h2 id="questionText"></h2>
+        <div id="options" class="options"></div>
+        <div id="feedback" class="feedback hidden"></div>
+        <button id="nextBtn" class="primary next hidden" onclick="nextQuestion()">Next Question →</button>
+      </div>
+    </div>
+
+    <div id="quizResult" class="result hidden">
+      <div class="result-circle"><span id="resultScore">0</span><small>/ <span id="resultTotal">10</span></small></div>
+      <span class="eyebrow">QUIZ COMPLETE</span>
+      <h2 id="resultTitle">Good work!</h2>
+      <p id="resultMessage"></p>
+      <div class="result-actions">
+        <button class="primary" onclick="startQuiz(selectedQuizCategory,currentQuizLength)">Try Again</button>
+        <button class="secondary" onclick="showPage('lessons')">Review Lessons</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="page">
+  <div class="about-card">
+    <span class="eyebrow">ABOUT THIS WEBSITE</span>
+    <h2>English practice made simple.</h2>
+    <p>This version separates the learning content from the website functions. You can add books, lessons, vocabulary, tenses, and quizzes by editing the files inside the <b>data</b> folder.</p>
+    <div class="feature-list">
+      <div><span>01</span><div><b>Separate data</b><p>Lessons, vocabulary, tenses, and quizzes have their own files.</p></div></div>
+      <div><span>02</span><div><b>Pashto support</b><p>Definitions can include Pashto meanings for your students.</p></div></div>
+      <div><span>03</span><div><b>Random practice</b><p>Choose All, Lessons, or Vocabulary and get 10 or 15 questions.</p></div></div>
+      <div><span>04</span><div><b>Easy expansion</b><p>When you give me another book, I can prepare its data file without redesigning the whole website.</p></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>English Starter • English + پښتو • Learn • Practice • Improve</footer>
+
+<script src="data/lessons.js"></script>
+<script src="data/vocabulary.js"></script>
+<script src="data/tenses.js"></script>
+<script src="data/quizzes.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
