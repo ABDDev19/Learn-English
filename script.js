@@ -11,7 +11,12 @@ let currentQuizLength = 10;
 let voices = [];
 
 function shuffle(arr) {
-  return [...arr].sort(() => Math.random() - 0.5);
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
 }
 
 function showPage(id) {
@@ -28,7 +33,6 @@ function route() {
   const hash = location.hash.replace(/^#/, "") || "home";
   const allowed = [
     "home",
-    "lessons",
     "vocabulary",
     "conversations",
     "stories",
@@ -101,7 +105,9 @@ function renderHelpfulHome() {
 }
 
 function renderLessons() {
-  $("#lessonGrid").innerHTML = LESSONS.map(
+  const grid = $("#lessonGrid");
+  if (!grid) return;
+  grid.innerHTML = LESSONS.map(
     (l, i) => `
     <article class="lesson-card">
       <div class="unit-badge">${i + 1}</div>
@@ -109,13 +115,16 @@ function renderLessons() {
         <span class="topic">${l.topic}</span>
         <h3>${l.title}</h3>
         <p>${l.subtitle}</p>
-    <a class="secondary lesson-open" href="lessons/lesson.html?id=${l.id}">Open Lesson →</a>
+        <a class="secondary lesson-open" href="lessons/lesson.html?id=${l.id}">Open Lesson →</a>
       </div>
     </article>`,
   ).join("");
 }
 
 function renderVocabulary() {
+  const grid = $("#wordGrid");
+  if (!grid) return;
+
   const search = ($("#wordSearch")?.value || "").trim().toLowerCase();
   const cat = $("#wordCategory")?.value || "all";
   const filtered = VOCABULARY.filter((v) => {
@@ -126,16 +135,21 @@ function renderVocabulary() {
     const mc = cat === "all" || v.category === cat;
     return ms && mc;
   });
-  $("#wordGrid").innerHTML =
-    filtered
+
+  // On the normal Words page, show the complete list in a fresh random order.
+  // Search/category results stay stable so they are easy to scan.
+  const displayWords = !search && cat === "all" ? shuffle(filtered) : filtered;
+
+  grid.innerHTML =
+    displayWords
       .map(
         (v) => `
     <article class="word-card">
       <h3>${v.word}</h3>
-      <div class="meaning">${v.pashto}</div>
+      <div class="meaning" dir="rtl">${v.pashto}</div>
       <div class="category">${v.category}</div>
       <div class="example">${v.example}</div>
-      <button class="listen-btn" onclick="speakText(${JSON.stringify(v.word)})">🔊 Hear</button>
+      <button class="listen-btn" data-speak="${encodeURIComponent(v.word)}">🔊 Hear</button>
     </article>`,
       )
       .join("") ||
@@ -144,20 +158,36 @@ function renderVocabulary() {
 
 function setupVocabulary() {
   const select = $("#wordCategory");
-  if (!select) return;
+  const searchInput = $("#wordSearch");
+  const randomBtn = $("#randomWordBtn");
+  const randomBox = $("#randomWord");
+  if (!select || !searchInput || !randomBtn || !randomBox) return;
+
   [...new Set(VOCABULARY.map((v) => v.category))].sort().forEach((c) => {
     const o = document.createElement("option");
     o.value = c;
     o.textContent = c;
     select.appendChild(o);
   });
-  $("#wordSearch").addEventListener("input", renderVocabulary);
-  $("#wordCategory").addEventListener("change", renderVocabulary);
-  $("#randomWordBtn").addEventListener("click", () => {
-    const v = VOCABULARY[Math.floor(Math.random() * VOCABULARY.length)];
-    const box = $("#randomWord");
-    box.classList.remove("hidden");
-    box.innerHTML = `<span class="eyebrow">RANDOM WORD</span><div style="font-size:27px;font-weight:900;margin-top:4px">${v.word}</div><div dir="rtl" style="font-size:20px;color:#ffd08a">${v.pashto}</div><div style="margin-top:7px;color:#cbd1d9">${v.category}</div><button class="listen-btn" style="margin-top:10px" onclick="speakText(${JSON.stringify(v.word)})">🔊 Hear word</button>`;
+
+  searchInput.addEventListener("input", renderVocabulary);
+  select.addEventListener("change", renderVocabulary);
+
+  let lastRandomWord = "";
+  randomBtn.addEventListener("click", () => {
+    let choices = VOCABULARY.filter((v) => v.word !== lastRandomWord);
+    if (!choices.length) choices = VOCABULARY;
+    const v = choices[Math.floor(Math.random() * choices.length)];
+    lastRandomWord = v.word;
+
+    randomBox.classList.remove("hidden");
+    randomBox.innerHTML = `
+      <span class="eyebrow">RANDOM WORD</span>
+      <div style="font-size:27px;font-weight:900;margin-top:4px">${v.word}</div>
+      <div dir="rtl" style="font-size:20px;color:#ffd08a">${v.pashto}</div>
+      <div style="margin-top:7px;color:#cbd1d9">${v.category}</div>
+      <div style="margin-top:8px">${v.example}</div>
+      <button class="listen-btn" style="margin-top:10px" data-speak="${encodeURIComponent(v.word)}">🔊 Hear word</button>`;
   });
 }
 
@@ -183,11 +213,14 @@ function renderConversations() {
 }
 
 function renderConversationCards(category = "All") {
-  const list =
+  const grid = $("#conversationGrid");
+  if (!grid) return;
+  const baseList =
     category === "All"
       ? CONVERSATIONS
       : CONVERSATIONS.filter((c) => c.category === category);
-  $("#conversationGrid").innerHTML = list
+  const list = shuffle(baseList);
+  grid.innerHTML = list
     .map(
       (c) => `
     <article class="conversation-card">
@@ -210,17 +243,19 @@ function dialogueHTML(c, compact = false) {
     <div class="line"><div class="speaker">${speaker}</div><div class="speech">${text}</div></div>`,
     )
     .join("")}</div>
-  <div class="listen-row"><button class="listen-btn" onclick="speakText(${JSON.stringify(c.lines.map((x) => x[0] + ". " + x[1]).join(" "))})">🔊 Listen</button><button class="stop-btn" onclick="stopSpeaking()">Stop</button></div>`;
+  <div class="listen-row"><button class="listen-btn" data-speak="${encodeURIComponent(c.lines.map((x) => x[0] + ". " + x[1]).join(" "))}">🔊 Listen</button><button class="stop-btn" data-stop-speaking>Stop</button></div>`;
 }
 
 function renderStories() {
-  $("#storyGrid").innerHTML = STORIES.map(
+  const grid = $("#storyGrid");
+  if (!grid) return;
+  grid.innerHTML = shuffle(STORIES).map(
     (s) => `
     <article class="story-card">
       <span class="eyebrow">${s.level}</span>
       <h3>${s.title}</h3><div class="story-meta" dir="rtl">${s.pashtoTitle}</div>
       <div class="story-text">${s.text}</div>
-      <div class="listen-row"><button class="listen-btn" onclick="speakText(${JSON.stringify(s.text)})">🔊 Listen to Story</button><button class="stop-btn" onclick="stopSpeaking()">Stop</button></div>
+      <div class="listen-row"><button class="listen-btn" data-speak="${encodeURIComponent(s.text)}">🔊 Listen to Story</button><button class="stop-btn" data-stop-speaking>Stop</button></div>
     </article>`,
   ).join("");
 }
@@ -252,14 +287,71 @@ if ("speechSynthesis" in window) {
   speechSynthesis.onvoiceschanged = loadVoices;
 }
 
+// One safe speech handler for dynamically rendered Words, Conversations and Stories.
+document.addEventListener("click", (event) => {
+  const speakButton = event.target.closest("[data-speak]");
+  if (speakButton) {
+    speakText(decodeURIComponent(speakButton.dataset.speak));
+    return;
+  }
+
+  if (event.target.closest("[data-stop-speaking]")) {
+    stopSpeaking();
+  }
+});
+
+function buildVocabularyQuizQuestions(limit = 80) {
+  if (!Array.isArray(VOCABULARY) || VOCABULARY.length < 4) return [];
+
+  const questions = [];
+  const sourceWords = shuffle(VOCABULARY);
+
+  for (const word of sourceWords) {
+    if (questions.length >= limit) break;
+    const askPashto = questions.length % 2 === 0;
+    const correctValue = askPashto ? word.pashto : word.word;
+    const candidates = shuffle(
+      VOCABULARY.filter((v) => v.word !== word.word),
+    );
+
+    const distractors = [];
+    const seen = new Set([correctValue]);
+    for (const candidate of candidates) {
+      const value = askPashto ? candidate.pashto : candidate.word;
+      if (!value || seen.has(value)) continue;
+      seen.add(value);
+      distractors.push(value);
+      if (distractors.length === 3) break;
+    }
+
+    if (distractors.length < 3) continue;
+
+    questions.push({
+      id: `vocab-${askPashto ? "ps" : "en"}-${word.word}-${questions.length}`,
+      unit: "Vocabulary",
+      question: askPashto
+        ? `What is the Pashto meaning of “${word.word}”?`
+        : `What is the English word for “${word.pashto}”?`,
+      options: shuffle([correctValue, ...distractors]),
+      answer: correctValue,
+      explanation: askPashto
+        ? `${word.word} means ${word.pashto}.`
+        : `${word.pashto} means ${word.word}.`,
+    });
+  }
+
+  return questions;
+}
+
 function startQuiz(length) {
-  currentQuizLength = length;
-  currentQuiz = shuffle(QUIZZES).slice(0, length);
+  const pool = [...QUIZZES, ...buildVocabularyQuizQuestions(100)];
+  currentQuizLength = Math.min(length, pool.length);
+  currentQuiz = shuffle(pool).slice(0, currentQuizLength);
   quizIndex = 0;
   quizScore = 0;
-  $("#quizIntro").classList.add("hidden");
-  $("#quizResult").classList.add("hidden");
-  $("#quizArea").classList.remove("hidden");
+  $("#quizIntro")?.classList.add("hidden");
+  $("#quizResult")?.classList.add("hidden");
+  $("#quizArea")?.classList.remove("hidden");
   renderQuestion();
 }
 function renderQuestion() {
@@ -268,7 +360,7 @@ function renderQuestion() {
   $("#questionUnit").textContent = q.unit;
   $("#questionText").textContent = q.question;
   $("#liveScore").textContent = quizScore;
-  $("#quizProgress").style.width = (quizIndex / currentQuiz.length) * 100 + "%";
+  $("#quizProgress").style.width = ((quizIndex + 1) / currentQuiz.length) * 100 + "%";
   $("#feedback").className = "feedback hidden";
   $("#feedback").textContent = "";
   $("#nextBtn").classList.add("hidden");
@@ -325,16 +417,18 @@ function setupQuiz() {
   $$("[data-quiz-length]").forEach((b) =>
     b.addEventListener("click", () => startQuiz(Number(b.dataset.quizLength))),
   );
-  $("#nextBtn").addEventListener("click", nextQuestion);
-  $("#tryAgain").addEventListener("click", () => startQuiz(currentQuizLength));
+  $("#nextBtn")?.addEventListener("click", nextQuestion);
+  $("#tryAgain")?.addEventListener("click", () => startQuiz(currentQuizLength));
 }
 function closeMobileMenu() {
-  $("#nav").style.display = "";
+  const nav = $("#nav");
+  if (nav) nav.style.display = "";
 }
-$("#mobileMenu").addEventListener("click", () => {
-  $("#nav").style.display = $("#nav").style.display === "flex" ? "" : "flex";
+$("#mobileMenu")?.addEventListener("click", () => {
+  const nav = $("#nav");
+  if (nav) nav.style.display = nav.style.display === "flex" ? "" : "flex";
 });
-$("#brandLink").addEventListener("click", () => {
+$("#brandLink")?.addEventListener("click", () => {
   if (location.hash !== "#home") location.hash = "home";
   else window.scrollTo({ top: 0, behavior: "smooth" });
 });
