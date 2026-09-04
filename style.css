@@ -2857,10 +2857,6 @@ body.standalone-lesson footer a {
   transform: translateX(4px);
 }
 
-/* =========================================
-   CARD POSITIONS
-========================================= */
-
 .explore-item-one {
   top: 28px;
   left: 0;
@@ -2881,10 +2877,6 @@ body.standalone-lesson footer a {
 
   animation: exploreCardThree 6s ease-in-out infinite;
 }
-
-/* =========================================
-   FLOATING ANIMATIONS
-========================================= */
 
 @keyframes exploreCardOne {
   0%,
