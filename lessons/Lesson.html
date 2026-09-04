@@ -92,6 +92,7 @@
         let lessonId = params.get("id") || "unit-1";
 
         const lessonPage = document.getElementById("lessonPage");
+        const COURSE_LESSONS = LESSONS.filter(lesson => /^unit-\d+$/.test(lesson.id));
         const lessonList = document.getElementById("lessonList");
         const lessonSearch = document.getElementById("lessonSearch");
 
@@ -115,7 +116,7 @@
 
             const searchText = search.toLowerCase().trim();
 
-            const filteredLessons = LESSONS.filter((lesson) => {
+            const filteredLessons = COURSE_LESSONS.filter((lesson) => {
 
                 return (
                     lesson.title.toLowerCase().includes(searchText) ||
@@ -137,7 +138,7 @@
       >
 
         <span class="sidebar-number">
-          ${String(LESSONS.indexOf(lesson) + 1).padStart(2, "0")}
+          ${String(COURSE_LESSONS.indexOf(lesson) + 1).padStart(2, "0")}
         </span>
 
         <div>
@@ -297,7 +298,7 @@
             }
 
 
-            const lessonIndex = LESSONS.findIndex(
+            const lessonIndex = COURSE_LESSONS.findIndex(
                 lessonItem => lessonItem.id === lessonId
             );
 
@@ -309,7 +310,7 @@
 
 
             const nextLesson =
-                lessonIndex < LESSONS.length - 1
+                lessonIndex < COURSE_LESSONS.length - 1
                     ? LESSONS[lessonIndex + 1]
                     : null;
 

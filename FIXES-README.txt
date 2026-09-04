@@ -21,3 +21,6 @@ GitHub/Vercel:
 - Commit deleted old lesson files too.
 - Deploy the latest commit on Vercel.
 - Test: /lessons/lesson.html?id=unit-1
+
+
+LESSON DATA FIX: data/lessons.js contains lesson objects plus conversation/story data for legacy compatibility. The dedicated lesson page now filters strictly to unit-1 through unit-35, so conversations/stories can never appear as lessons or in previous/next navigation.

@@ -106,8 +106,9 @@ function renderHelpfulHome() {
 
 function renderLessons() {
   const grid = $("#lessonGrid");
+  const courseLessons = LESSONS.filter((l) => /^unit-\d+$/.test(l.id));
   if (!grid) return;
-  grid.innerHTML = LESSONS.map(
+  grid.innerHTML = courseLessons.map(
     (l, i) => `
     <article class="lesson-card">
       <div class="unit-badge">${i + 1}</div>
@@ -344,7 +345,8 @@ function buildVocabularyQuizQuestions(limit = 80) {
 }
 
 function startQuiz(length) {
-  const pool = [...QUIZZES, ...buildVocabularyQuizQuestions(100)];
+  const lessonQuizzes = QUIZZES.filter((q) => q.unit === "Vocabulary" || /^Unit\s+\d+$/i.test(q.unit));
+  const pool = [...lessonQuizzes, ...buildVocabularyQuizQuestions(100)];
   currentQuizLength = Math.min(length, pool.length);
   currentQuiz = shuffle(pool).slice(0, currentQuizLength);
   quizIndex = 0;
