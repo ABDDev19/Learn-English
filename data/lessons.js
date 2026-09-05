@@ -1103,6 +1103,561 @@ const LESSONS = [
       },
     ],
   },
+
+  // ============================================================
+  // UNITS 36–50
+  // ============================================================
+
+  {
+    id: "unit-36",
+    unit: "Unit 36",
+    title: "Simple Past",
+    subtitle: "Talking about completed actions in the past",
+    topic: "Simple Past",
+    intro:
+      "Use the simple past to talk about actions that started and finished in the past.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "د Simple Past زمانه د هغو کارونو لپاره کارېږي چې په تېر وخت کې ترسره او پای ته رسېدلي وي.",
+        rules: [
+          "Use the past form of the verb for positive sentences.",
+          "Use did not + base verb for negative sentences.",
+          "Use Did + subject + base verb for questions.",
+        ],
+        examples: [
+          "I visited my friend yesterday.",
+          "She watched a movie last night.",
+          "They played football on Friday.",
+          "I did not go to school yesterday.",
+          "Did you finish your homework?",
+        ],
+        examplePashto: [
+          "ما پرون له خپل ملګري سره لیدنه وکړه.",
+          "هغې تېره شپه یو فلم ولید.",
+          "هغوی د جمعې په ورځ فوټبال وکړ.",
+          "زه پرون ښوونځي ته لاړ نه شوم.",
+          "ایا تا خپل کورنی کار بشپړ کړ؟",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-37",
+    unit: "Unit 37",
+    title: "Present Continuous Questions",
+    subtitle: "Asking about actions happening now",
+    topic: "Present Continuous Questions",
+    intro: "Use present continuous questions to ask what someone is doing now.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "د Present Continuous پوښتنې د هغه کار په اړه پوښتنه کوي چې همدا اوس روان وي.",
+        rules: [
+          "Use Am, Is, or Are before the subject.",
+          "Use the verb with -ing.",
+          "Use What, Where, Why, or Who when needed.",
+        ],
+        examples: [
+          "What are you doing?",
+          "Where is she going?",
+          "Why are they laughing?",
+          "Who is he talking to?",
+          "Are you studying English?",
+        ],
+        examplePashto: [
+          "ته څه کوې؟",
+          "هغه چېرته روانه ده؟",
+          "هغوی ولې خاندېږي؟",
+          "هغه له چا سره خبرې کوي؟",
+          "ایا ته انګلیسي زده کوې؟",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-38",
+    unit: "Unit 38",
+    title: "There Is & There Are",
+    subtitle: "Talking about things that exist",
+    topic: "There Is and There Are",
+    intro: "Use There is for one thing and There are for more than one thing.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "There is د یوې مفردې شي لپاره او There are د څو شیانو لپاره کارېږي.",
+        rules: [
+          "There is + singular noun.",
+          "There are + plural noun.",
+          "Use Is there...? for singular questions.",
+          "Use Are there...? for plural questions.",
+        ],
+        examples: [
+          "There is a book on the table.",
+          "There is a school near my house.",
+          "There are three students in the room.",
+          "Are there any shops nearby?",
+          "Is there a hospital here?",
+        ],
+        examplePashto: [
+          "په مېز باندې یو کتاب شته.",
+          "زما د کور ترڅنګ یو ښوونځی شته.",
+          "په کوټه کې درې زده کوونکي دي.",
+          "ایا دلته نږدې کوم دوکانونه شته؟",
+          "ایا دلته روغتون شته؟",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-39",
+    unit: "Unit 39",
+    title: "Some & Any",
+    subtitle: "Talking about an amount",
+    topic: "Some and Any",
+    intro:
+      "Use some mainly in positive sentences and any mainly in questions and negative sentences.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "Some عموماً په مثبتو جملو کې او Any عموماً په پوښتنو او منفي جملو کې کارېږي.",
+        rules: [
+          "Use some in positive sentences.",
+          "Use any in negative sentences.",
+          "Use any in most questions.",
+        ],
+        examples: [
+          "I have some money.",
+          "She bought some apples.",
+          "I don't have any money.",
+          "Do you have any questions?",
+          "There aren't any students here.",
+        ],
+        examplePashto: [
+          "زه لږې پیسې لرم.",
+          "هغې یو څو مڼې واخیستې.",
+          "زه هېڅ پیسې نه لرم.",
+          "ایا ته کومې پوښتنې لرې؟",
+          "دلته هېڅ زده کوونکي نشته.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-40",
+    unit: "Unit 40",
+    title: "Much, Many & A Lot Of",
+    subtitle: "Talking about quantity",
+    topic: "Quantity",
+    intro:
+      "Use much with uncountable nouns, many with countable plural nouns, and a lot of with both.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "Much له نه شمېرل کېدونکو نومونو سره، Many له شمېرل کېدونکو جمع نومونو سره او A lot of له دواړو سره کارېږي.",
+        rules: [
+          "Use much with uncountable nouns.",
+          "Use many with plural countable nouns.",
+          "Use a lot of with countable and uncountable nouns.",
+        ],
+        examples: [
+          "I don't have much time.",
+          "How many students are there?",
+          "She has many books.",
+          "We have a lot of work.",
+          "They bought a lot of food.",
+        ],
+        examplePashto: [
+          "زه ډېر وخت نه لرم.",
+          "څو زده کوونکي شته؟",
+          "هغې ډېر کتابونه لري.",
+          "موږ ډېر کار لرو.",
+          "هغوی ډېر خواړه واخیستل.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-41",
+    unit: "Unit 41",
+    title: "Frequency Adverbs",
+    subtitle: "Talking about how often something happens",
+    topic: "Frequency Adverbs",
+    intro: "Frequency adverbs tell us how often an action happens.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto: "Frequency Adverbs موږ ته ښيي چې یو کار څو ځله ترسره کېږي.",
+        rules: [
+          "Always means every time.",
+          "Usually means most of the time.",
+          "Sometimes means on some occasions.",
+          "Never means at no time.",
+        ],
+        examples: [
+          "I always wake up early.",
+          "She usually drinks tea.",
+          "They sometimes play football.",
+          "He never eats breakfast.",
+          "We often study together.",
+        ],
+        examplePashto: [
+          "زه تل وختي له خوبه پاڅېږم.",
+          "هغه معمولاً چای څښي.",
+          "هغوی کله ناکله فوټبال کوي.",
+          "هغه هېڅکله سهارنۍ نه خوري.",
+          "موږ ډېر وخت یوځای زده کړه کوو.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-42",
+    unit: "Unit 42",
+    title: "Object Questions",
+    subtitle: "Asking about people and things",
+    topic: "Object Questions",
+    intro:
+      "Object questions ask about the person or thing receiving an action.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "Object Question د هغه کس یا شي په اړه پوښتنه کوي چې عمل پرې ترسره کېږي.",
+        rules: [
+          "Use What to ask about things.",
+          "Use Who to ask about people.",
+          "Use auxiliary verbs such as do, does, or did when needed.",
+        ],
+        examples: [
+          "What do you want?",
+          "Who did you call?",
+          "What does she need?",
+          "Who are they visiting?",
+          "What did he buy?",
+        ],
+        examplePashto: [
+          "ته څه غواړې؟",
+          "تا چا ته زنګ وواهه؟",
+          "هغه څه ته اړتیا لري؟",
+          "هغوی د چا لیدو ته ځي؟",
+          "هغه څه واخیستل؟",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-43",
+    unit: "Unit 43",
+    title: "First Conditional",
+    subtitle: "Talking about possible future situations",
+    topic: "First Conditional",
+    intro:
+      "Use the first conditional for real or possible situations in the future.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "First Conditional د راتلونکي وخت د ممکنه حالتونو او پایلو لپاره کارېږي.",
+        rules: [
+          "If + present simple, will + base verb.",
+          "The condition comes with if.",
+          "The result describes what will happen.",
+        ],
+        examples: [
+          "If it rains, I will stay home.",
+          "If you study, you will pass the exam.",
+          "If she comes, I will talk to her.",
+          "If we hurry, we will catch the bus.",
+          "If they call me, I will answer.",
+        ],
+        examplePashto: [
+          "که باران وشي، زه به په کور کې پاتې شم.",
+          "که ته زده کړه وکړې، په ازموینه کې به بریالی شې.",
+          "که هغه راشي، زه به ورسره خبرې وکړم.",
+          "که موږ بیړه وکړو، بس به ونیسو.",
+          "که هغوی ماته زنګ ووهي، زه به ځواب ورکړم.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-44",
+    unit: "Unit 44",
+    title: "Have To & Don't Have To",
+    subtitle: "Talking about necessity",
+    topic: "Have To",
+    intro:
+      "Use have to when something is necessary and don't have to when something is not necessary.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "Have to د اړتیا یا مجبوریت لپاره او Don't have to د نه اړتیا لپاره کارېږي.",
+        rules: [
+          "Have to means something is necessary.",
+          "Don't have to means something is not necessary.",
+          "Use has to with he, she, and it.",
+        ],
+        examples: [
+          "I have to go to work.",
+          "She has to study tonight.",
+          "We have to wear uniforms.",
+          "You don't have to come early.",
+          "He doesn't have to cook today.",
+        ],
+        examplePashto: [
+          "زه باید کار ته لاړ شم.",
+          "هغه باید نن شپه زده کړه وکړي.",
+          "موږ باید یونیفورم واغوندو.",
+          "ته اړ نه یې چې وختي راشې.",
+          "هغه اړ نه دی چې نن پخلی وکړي.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-45",
+    unit: "Unit 45",
+    title: "Used To",
+    subtitle: "Talking about past habits",
+    topic: "Used To",
+    intro:
+      "Use used to to talk about past habits or situations that are no longer true.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "Used to د هغو پخوانیو عادتونو یا حالتونو لپاره کارېږي چې اوس نور نه وي.",
+        rules: [
+          "Used to + base verb describes a past habit.",
+          "The habit is usually no longer true.",
+        ],
+        examples: [
+          "I used to play football.",
+          "She used to live in Kabul.",
+          "We used to walk to school.",
+          "He used to drink coffee.",
+          "They used to visit us every week.",
+        ],
+        examplePashto: [
+          "زه پخوا فوټبال کاوه.",
+          "هغه پخوا په کابل کې اوسېده.",
+          "موږ پخوا ښوونځي ته په پښو تللو.",
+          "هغه پخوا قهوه څښله.",
+          "هغوی پخوا هره اوونۍ زموږ لیدو ته راتلل.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-46",
+    unit: "Unit 46",
+    title: "Too & Enough",
+    subtitle: "Talking about degree and sufficiency",
+    topic: "Too and Enough",
+    intro: "Too means more than necessary. Enough means as much as necessary.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "Too د اړتیا څخه د زیاتوالي او Enough د اړتیا د پوره کېدو لپاره کارېږي.",
+        rules: [
+          "Too + adjective means more than necessary.",
+          "Adjective + enough means sufficient.",
+          "Enough + noun means sufficient quantity.",
+        ],
+        examples: [
+          "The bag is too heavy.",
+          "The water is too hot.",
+          "He is old enough to drive.",
+          "We have enough food.",
+          "This room is big enough.",
+        ],
+        examplePashto: [
+          "بکس ډېر دروند دی.",
+          "اوبه ډېرې ګرمې دي.",
+          "هغه دومره لوی دی چې موټر وچلوي.",
+          "موږ کافي خواړه لرو.",
+          "دا کوټه کافي لویه ده.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-47",
+    unit: "Unit 47",
+    title: "Question Tags",
+    subtitle: "Checking information",
+    topic: "Question Tags",
+    intro: "Question tags are short questions added to the end of a statement.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "Question Tag یوه لنډه پوښتنه ده چې د جملې په پای کې د معلوماتو د تایید لپاره راځي.",
+        rules: [
+          "Positive statement usually takes a negative tag.",
+          "Negative statement usually takes a positive tag.",
+        ],
+        examples: [
+          "You are a student, aren't you?",
+          "She is coming, isn't she?",
+          "He isn't busy, is he?",
+          "They can swim, can't they?",
+          "You don't like tea, do you?",
+        ],
+        examplePashto: [
+          "ته زده کوونکی یې، نه یې؟",
+          "هغه را روانه ده، نه ده؟",
+          "هغه بوخت نه دی، دی؟",
+          "هغوی لامبو وهلی شي، نه شي؟",
+          "ته چای نه خوښوې، خوښوې یې؟",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-48",
+    unit: "Unit 48",
+    title: "Reported Speech Basics",
+    subtitle: "Reporting what someone said",
+    topic: "Reported Speech",
+    intro: "Reported speech is used to tell someone what another person said.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "Reported Speech هغه وخت کارېږي چې د بل کس خبرې په غیر مستقیم ډول بیان کړو.",
+        rules: [
+          "Use said or told to report information.",
+          "Pronouns and tenses may change when reporting.",
+        ],
+        examples: [
+          "He said that he was tired.",
+          "She said that she was busy.",
+          "Ali told me that he was sick.",
+          "They said that they were ready.",
+          "She told us that she liked English.",
+        ],
+        examplePashto: [
+          "هغه وویل چې ستړی و.",
+          "هغې وویل چې هغه بوخته وه.",
+          "علي ماته وویل چې هغه ناروغ و.",
+          "هغوی وویل چې دوی تیار وو.",
+          "هغې موږ ته وویل چې انګلیسي یې خوښېده.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-49",
+    unit: "Unit 49",
+    title: "Relative Clauses",
+    subtitle: "Giving more information about people and things",
+    topic: "Relative Clauses",
+    intro: "Relative clauses give extra information about a person or thing.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto: "Relative Clause د یو کس یا شي په اړه اضافي معلومات ورکوي.",
+        rules: [
+          "Use who for people.",
+          "Use which for things.",
+          "Use that for people or things in many situations.",
+        ],
+        examples: [
+          "The man who lives here is my uncle.",
+          "The woman who teaches us is kind.",
+          "This is the book that I bought.",
+          "The car which is outside is mine.",
+          "I know a student who speaks English well.",
+        ],
+        examplePashto: [
+          "هغه سړی چې دلته اوسېږي زما تره دی.",
+          "هغه ښځه چې موږ ته درس راکوي مهربانه ده.",
+          "دا هغه کتاب دی چې ما اخیستی دی.",
+          "هغه موټر چې بهر ولاړ دی زما دی.",
+          "زه یو داسې زده کوونکی پېژنم چې انګلیسي ښه خبرې کوي.",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "unit-50",
+    unit: "Unit 50",
+    title: "Grammar Review & Real Conversation",
+    subtitle: "Using grammar naturally in everyday English",
+    topic: "Grammar Review",
+    intro:
+      "Review the main grammar patterns and use them in natural conversations.",
+
+    sections: [
+      {
+        title: "Rule",
+        pashto:
+          "په دې درس کې زده کوونکي د پخوانیو مهمو ګرامري موضوعاتو تکرار کوي او په ورځني خبرو کې یې کاروي.",
+        rules: [
+          "Use the correct tense for the time.",
+          "Use questions naturally in conversations.",
+          "Practice speaking instead of only memorizing rules.",
+        ],
+        examples: [
+          "Where do you live?",
+          "What are you doing now?",
+          "What did you do yesterday?",
+          "What do you want to do tomorrow?",
+          "Have you finished your homework?",
+          "Can you help me?",
+          "Why are you late?",
+          "What time does the class start?",
+        ],
+        examplePashto: [
+          "ته چېرته ژوند کوې؟",
+          "ته اوس څه کوې؟",
+          "تا پرون څه وکړل؟",
+          "ته سبا څه کول غواړې؟",
+          "ایا تا خپل کورنی کار بشپړ کړی؟",
+          "ایا ته زما مرسته کولی شې؟",
+          "ته ولې ناوخته یې؟",
+          "ټولګی په څو بجو پیلېږي؟",
+        ],
+      },
+    ],
+  },
 ];
 
 //
