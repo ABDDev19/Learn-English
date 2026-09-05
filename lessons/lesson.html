@@ -10,52 +10,307 @@
   <title>English Bridge — Lesson</title>
 
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* =====================================================
+       PASHTO SUPPORT
+       ===================================================== */
+
+    .rule-ps,
+    .section-pashto,
+    .example-ps,
+    .example-section-pashto {
+      direction: rtl;
+      text-align: right;
+      unicode-bidi: plaintext;
+      font-family:
+        "Noto Naskh Arabic",
+        "Noto Sans Arabic",
+        Tahoma,
+        Arial,
+        sans-serif;
+    }
+
+
+    /* =====================================================
+       EXAMPLE
+       ===================================================== */
+
+    .lesson-example {
+      margin-bottom: 18px;
+      padding: 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+
+    /* =====================================================
+       ENGLISH EXAMPLE
+       ===================================================== */
+
+    .example-en {
+      padding-bottom: 12px;
+    }
+
+
+    .example-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+
+    .example-text {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+
+    /* =====================================================
+       PASHTO EXAMPLE
+       ===================================================== */
+
+    .example-ps {
+      border-top: 1px solid #e5e7eb;
+      padding-top: 12px;
+    }
+
+
+    .example-ps .example-label {
+      text-align: right;
+    }
+
+
+    .example-ps .example-text {
+      text-align: right;
+      direction: rtl;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+
+    /* =====================================================
+       RULE PASHTO
+       ===================================================== */
+
+    .rule-ps {
+      margin-top: 7px;
+      padding-left: 24px;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       EXAMPLE SECTION HEADER
+       ===================================================== */
+
+    .example-section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+
+    .example-section-icon {
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+
+    .example-section-title {
+      margin: 0;
+    }
+
+
+    .example-section-pashto {
+      margin-top: 4px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+
+    /* =====================================================
+       POSITIVE / NEGATIVE / QUESTION / CONVERSATION
+       ===================================================== */
+
+    .positive-section {
+      border-left: 4px solid #22c55e;
+      padding-left: 18px;
+    }
+
+
+    .negative-section {
+      border-left: 4px solid #ef4444;
+      padding-left: 18px;
+    }
+
+
+    .question-section {
+      border-left: 4px solid #3b82f6;
+      padding-left: 18px;
+    }
+
+
+    .conversation-section {
+      border-left: 4px solid #8b5cf6;
+      padding-left: 18px;
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 800px) {
+
+      .lesson-layout {
+        grid-template-columns: 1fr !important;
+      }
+
+      .lesson-sidebar {
+        grid-column: 1 !important;
+        width: 100%;
+        position: static;
+      }
+
+      .lesson-content {
+        grid-column: 1 !important;
+        width: 100%;
+      }
+
+    }
+  </style>
+
 </head>
 
+
 <body class="standalone-lesson">
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
 
   <header class="topbar">
 
     <a class="brand" href="../index.html#home" aria-label="Go to home">
-      <div class="logo">E</div>
+
+      <div class="logo">
+        E
+      </div>
 
       <div>
-        <h1>English Bridge</h1>
-        <span>Learn • Speak • Listen</span>
+
+        <h1>
+          English Bridge
+        </h1>
+
+        <span>
+          Learn • Speak • Listen
+        </span>
+
       </div>
+
     </a>
 
+
     <nav>
-      <a class="nav-btn" href="../index.html#home">Home</a>
-      <a class="nav-btn" href="lesson.html?id=unit-1">Lessons</a>
-      <a class="nav-btn" href="../index.html#vocabulary">Words</a>
-      <a class="nav-btn" href="../index.html#conversations">Conversations</a>
-      <a class="nav-btn" href="../index.html#stories">Stories</a>
-      <a class="nav-btn" href="../index.html#quiz">Quiz</a>
-      <a class="nav-btn" href="../index.html#about">About</a>
+
+      <a class="nav-btn" href="../index.html#home">
+        Home
+      </a>
+
+      <a class="nav-btn" href="lesson.html?id=unit-1">
+        Lessons
+      </a>
+
+      <a class="nav-btn" href="../index.html#vocabulary">
+        Words
+      </a>
+
+      <a class="nav-btn" href="../index.html#conversations">
+        Conversations
+      </a>
+
+      <a class="nav-btn" href="../index.html#stories">
+        Stories
+      </a>
+
+      <a class="nav-btn" href="../index.html#quiz">
+        Quiz
+      </a>
+
+      <a class="nav-btn" href="../index.html#about">
+        About
+      </a>
+
     </nav>
 
   </header>
 
 
+
+  <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
   <main class="lesson-layout">
 
-    <!-- LEFT SIDEBAR -->
+
+    <!-- ===================================================
+         LEFT SIDEBAR
+         =================================================== -->
+
     <aside class="lesson-sidebar">
 
+
       <div class="sidebar-header">
-        <span class="eyebrow">ENGLISH BRIDGE</span>
-        <h2>Lessons</h2>
+
+        <span class="eyebrow">
+          ENGLISH BRIDGE
+        </span>
+
+        <h2>
+          Lessons
+        </h2>
+
       </div>
+
+
+      <!-- SEARCH -->
 
       <input type="search" id="lessonSearch" class="lesson-search" placeholder="Search lessons...">
 
+
+      <!-- LESSON LIST -->
+
       <div id="lessonList" class="lesson-list"></div>
+
 
     </aside>
 
 
-    <!-- RIGHT CONTENT -->
+
+    <!-- ===================================================
+         RIGHT CONTENT
+         =================================================== -->
+
     <section class="lesson-content">
 
       <div id="lessonPage">
@@ -68,251 +323,784 @@
 
     </section>
 
+
   </main>
 
 
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
   <footer>
+
     <div>
-      <b>English Bridge</b> • Beginner English • Pashto Support
+
+      <b>
+        English Bridge
+      </b>
+
+      • Beginner English
+      • Pashto Support
+
     </div>
 
+
     <div class="footer-links">
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#home">Home</a>
+
+      <a href="../index.html#about">
+        About
+      </a>
+
+      <a href="../index.html#home">
+        Home
+      </a>
+
     </div>
+
   </footer>
 
 
+
+  <!-- =====================================================
+       DATA FILES
+       ===================================================== -->
+
   <script src="../data/config.js"></script>
+
   <script src="../data/lessons.js"></script>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
 
   <script>
 
+    /* =====================================================
+       URL
+       ===================================================== */
+
     const params = new URLSearchParams(window.location.search);
+
     let lessonId = params.get("id") || "unit-1";
 
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
     const lessonPage = document.getElementById("lessonPage");
-    const COURSE_LESSONS = LESSONS.filter(lesson => /^unit-\d+$/.test(lesson.id));
     const lessonList = document.getElementById("lessonList");
     const lessonSearch = document.getElementById("lessonSearch");
 
 
-    // --------------------------------------------------
-    // FIND CURRENT LESSON
-    // --------------------------------------------------
+    /* =====================================================
+       COURSE LESSONS
+       ===================================================== */
+
+    const COURSE_LESSONS = LESSONS.filter(
+      lesson => /^unit-\d+$/.test(lesson.id)
+    );
+
+
+    /* =====================================================
+       FIND CURRENT LESSON
+       ===================================================== */
 
     function getCurrentLesson() {
 
-      return LESSONS.find(lesson => lesson.id === lessonId);
+      return LESSONS.find(
+        lesson => lesson.id === lessonId
+      );
 
     }
 
 
-    // --------------------------------------------------
-    // RENDER SIDEBAR
-    // --------------------------------------------------
+    /* =====================================================
+       ESCAPE HTML
+       ===================================================== */
+
+    function escapeHTML(value) {
+
+      if (value === null || value === undefined) {
+        return "";
+      }
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =====================================================
+       SIDEBAR
+       ===================================================== */
 
     function renderLessonList(search = "") {
 
       const searchText = search.toLowerCase().trim();
 
-      const filteredLessons = COURSE_LESSONS.filter((lesson) => {
+      const filteredLessons = COURSE_LESSONS.filter(lesson => {
+
+        const title =
+          String(lesson.title || "").toLowerCase();
+
+        const unit =
+          String(lesson.unit || "").toLowerCase();
+
+        const topic =
+          String(lesson.topic || "").toLowerCase();
+
+        const subtitle =
+          String(lesson.subtitle || "").toLowerCase();
 
         return (
-          lesson.title.toLowerCase().includes(searchText) ||
-          lesson.unit.toLowerCase().includes(searchText) ||
-          lesson.topic.toLowerCase().includes(searchText)
+          title.includes(searchText) ||
+          unit.includes(searchText) ||
+          topic.includes(searchText) ||
+          subtitle.includes(searchText)
         );
 
       });
 
 
-      lessonList.innerHTML = filteredLessons.map((lesson, index) => {
-
-        const active = lesson.id === lessonId ? "active" : "";
-
-        return `
-      <a
-        class="lesson-sidebar-item ${active}"
-        href="lesson.html?id=${lesson.id}"
-      >
-
-        <span class="sidebar-number">
-          ${String(COURSE_LESSONS.indexOf(lesson) + 1).padStart(2, "0")}
-        </span>
-
-        <div>
-          <small>${lesson.unit}</small>
-          <strong>${lesson.title}</strong>
-        </div>
-
-      </a>
-    `;
-
-      }).join("");
-
-
       if (!filteredLessons.length) {
 
         lessonList.innerHTML = `
-      <div class="no-lessons">
-        No lessons found.
-      </div>
-    `;
-
-      }
-
-    }
-
-
-    // --------------------------------------------------
-    // RULE RENDERER
-    // SUPPORTS OLD + NEW DATA FORMAT
-    // --------------------------------------------------
-
-    function renderRule(rule) {
-
-      // Old format:
-      // "Use in for something inside a place."
-
-      if (typeof rule === "string") {
-
-        return `
-      <div class="lesson-rule">
-
-        <div class="rule-en">
-          <span>•</span>
-          <span>${rule}</span>
+        <div class="no-lessons">
+          No lessons found.
         </div>
-
-      </div>
-    `;
-
-      }
-
-
-      // New format:
-      // {
-      //   english: "...",
-      //   pashto: "..."
-      // }
-
-      return `
-    <div class="lesson-rule">
-
-      <div class="rule-en">
-        <span>•</span>
-        <span>${rule.english}</span>
-      </div>
-
-      ${rule.pashto
-          ? `<div class="rule-ps" dir="rtl">${rule.pashto}</div>`
-          : ""
-        }
-
-    </div>
-  `;
-
-    }
-
-
-    // --------------------------------------------------
-    // EXAMPLE RENDERER
-    // SUPPORTS OLD + NEW DATA FORMAT
-    // --------------------------------------------------
-
-    function renderExample(example) {
-
-      // Old format
-
-      if (typeof example === "string") {
-
-        return `
-      <div class="lesson-example">
-
-        <div class="example-en">
-          ${example}
-        </div>
-
-      </div>
-    `;
-
-      }
-
-
-      // New format
-
-      return `
-    <div class="lesson-example">
-
-      <div class="example-en">
-        ${example.english}
-      </div>
-
-      ${example.pashto
-          ? `<div class="example-ps" dir="rtl">
-              ${example.pashto}
-            </div>`
-          : ""
-        }
-
-    </div>
-  `;
-
-    }
-
-
-    // --------------------------------------------------
-    // RENDER LESSON
-    // --------------------------------------------------
-
-    function renderLesson() {
-
-      const lesson = getCurrentLesson();
-
-
-      if (!lesson) {
-
-        lessonPage.innerHTML = `
-      <div class="lesson-not-found">
-
-        <span class="eyebrow">ERROR</span>
-
-        <h1>Lesson not found</h1>
-
-        <p>
-          We could not find the lesson you requested.
-        </p>
-
-        <a
-          class="primary"
-          href="lesson.html?id=unit-1"
-        >
-          ← Back to Lessons
-        </a>
-
-      </div>
-    `;
+      `;
 
         return;
       }
 
 
-      const lessonIndex = COURSE_LESSONS.findIndex(
-        lessonItem => lessonItem.id === lessonId
-      );
+      lessonList.innerHTML = filteredLessons
+        .map(lesson => {
+
+          const active =
+            lesson.id === lessonId
+              ? "active"
+              : "";
+
+          const number =
+            COURSE_LESSONS.indexOf(lesson) + 1;
+
+          return `
+          <a
+            class="lesson-sidebar-item ${active}"
+            href="lesson.html?id=${lesson.id}"
+          >
+
+            <span class="sidebar-number">
+              ${String(number).padStart(2, "0")}
+            </span>
+
+            <div>
+
+              <small>
+                ${escapeHTML(lesson.unit)}
+              </small>
+
+              <strong>
+                ${escapeHTML(lesson.title)}
+              </strong>
+
+            </div>
+
+          </a>
+        `;
+
+        })
+        .join("");
+
+    }
+
+
+    /* =====================================================
+       RULE RENDERER
+       ===================================================== */
+
+    function renderRule(rule) {
+
+      let english = "";
+      let pashto = "";
+
+
+      /*
+        FORMAT:
+  
+        "Use am with I."
+      */
+
+      if (typeof rule === "string") {
+
+        english = rule;
+
+      }
+
+
+      /*
+        FORMAT:
+  
+        {
+          english: "...",
+          pashto: "..."
+        }
+  
+        OR
+  
+        {
+          en: "...",
+          ps: "..."
+        }
+      */
+
+      else if (rule && typeof rule === "object") {
+
+        english =
+          rule.english ||
+          rule.en ||
+          rule.text ||
+          "";
+
+        pashto =
+          rule.pashto ||
+          rule.ps ||
+          "";
+
+      }
+
+
+      return `
+      <div class="lesson-rule">
+
+        <div class="rule-en">
+
+          <span>•</span>
+
+          <span>
+            ${escapeHTML(english)}
+          </span>
+
+        </div>
+
+        ${pashto
+          ? `
+              <div
+                class="rule-ps"
+                dir="rtl"
+              >
+                ${escapeHTML(pashto)}
+              </div>
+            `
+          : ""
+        }
+
+      </div>
+    `;
+
+    }
+
+
+    /* =====================================================
+       EXAMPLE NORMALIZER
+       ===================================================== */
+
+    function normalizeExample(example, pashto = "") {
+
+      let english = "";
+      let ps = "";
+
+
+      /*
+        FORMAT 1
+  
+        "I am happy."
+      */
+
+      if (typeof example === "string") {
+
+        english = example;
+        ps = pashto || "";
+
+      }
+
+
+      /*
+        FORMAT 2
+  
+        {
+          english: "...",
+          pashto: "..."
+        }
+      */
+
+      else if (
+        example &&
+        typeof example === "object"
+      ) {
+
+        english =
+          example.english ||
+          example.en ||
+          example.text ||
+          "";
+
+        ps =
+          example.pashto ||
+          example.ps ||
+          pashto ||
+          "";
+
+      }
+
+
+      return {
+        english,
+        pashto: ps
+      };
+
+    }
+
+
+    /* =====================================================
+       EXAMPLE RENDERER
+       ===================================================== */
+
+    function renderExample(example, pashto = "") {
+
+      const data =
+        normalizeExample(
+          example,
+          pashto
+        );
+
+
+      return `
+      <div class="lesson-example">
+
+        <div class="example-en">
+
+          <span class="example-label">
+            English
+          </span>
+
+          <div class="example-text">
+            ${escapeHTML(data.english)}
+          </div>
+
+        </div>
+
+
+        ${data.pashto
+          ? `
+              <div
+                class="example-ps"
+                dir="rtl"
+              >
+
+                <span class="example-label">
+                  پښتو
+                </span>
+
+                <div class="example-text">
+                  ${escapeHTML(data.pashto)}
+                </div>
+
+              </div>
+            `
+          : ""
+        }
+
+      </div>
+    `;
+
+    }
+
+
+    /* =====================================================
+       EXAMPLES ARRAY
+       ===================================================== */
+
+    function renderExamples(
+      examples = [],
+      pashtoExamples = []
+    ) {
+
+      if (
+        !Array.isArray(examples) ||
+        examples.length === 0
+      ) {
+
+        return "";
+
+      }
+
+
+      return examples
+        .map((example, index) => {
+
+          const pashto =
+            Array.isArray(pashtoExamples)
+              ? pashtoExamples[index] || ""
+              : "";
+
+          return renderExample(
+            example,
+            pashto
+          );
+
+        })
+        .join("");
+
+    }
+
+
+    /* =====================================================
+       EXAMPLE GROUP
+       ===================================================== */
+
+    function renderExampleGroup(
+      title,
+      pashtoTitle,
+      examples,
+      pashtoExamples,
+      icon,
+      extraClass = ""
+    ) {
+
+      if (
+        !Array.isArray(examples) ||
+        examples.length === 0
+      ) {
+
+        return "";
+
+      }
+
+
+      return `
+      <div
+        class="
+          lesson-block
+          example-section
+          ${extraClass}
+        "
+      >
+
+        <div
+          class="example-section-header"
+        >
+
+          <div
+            class="example-section-icon"
+          >
+            ${icon}
+          </div>
+
+
+          <div>
+
+            <h3
+              class="example-section-title"
+            >
+              ${escapeHTML(title)}
+            </h3>
+
+
+            ${pashtoTitle
+          ? `
+                  <div
+                    class="example-section-pashto"
+                    dir="rtl"
+                  >
+                    ${escapeHTML(pashtoTitle)}
+                  </div>
+                `
+          : ""
+        }
+
+          </div>
+
+        </div>
+
+
+        <div class="examples-list">
+
+          ${renderExamples(
+          examples,
+          pashtoExamples
+        )}
+
+        </div>
+
+      </div>
+    `;
+
+    }
+
+
+    /* =====================================================
+       RENDER SECTION
+       ===================================================== */
+
+    function renderSection(
+      section,
+      sectionIndex
+    ) {
+
+      return `
+      <article class="lesson-section">
+
+        <div class="section-number">
+          ${String(sectionIndex + 1).padStart(2, "0")}
+        </div>
+
+
+        <div class="section-main">
+
+          <h2>
+            ${escapeHTML(section.title || "")}
+          </h2>
+
+
+          ${section.pashto
+          ? `
+                <div
+                  class="section-pashto"
+                  dir="rtl"
+                >
+                  ${escapeHTML(section.pashto)}
+                </div>
+              `
+          : ""
+        }
+
+
+          <!-- ==========================================
+               RULES
+               ========================================== -->
+
+          ${Array.isArray(section.rules) &&
+          section.rules.length
+          ? `
+                <div class="lesson-block">
+
+                  <h3>
+                    Grammar Rules
+                  </h3>
+
+                  <div class="rules-list">
+
+                    ${section.rules
+            .map(renderRule)
+            .join("")}
+
+                  </div>
+
+                </div>
+              `
+          : ""
+        }
+
+
+          <!-- ==========================================
+               OLD / NORMAL EXAMPLES
+               ========================================== -->
+
+          ${Array.isArray(section.examples) &&
+          section.examples.length
+          ? renderExampleGroup(
+            "Examples",
+            "بېلګې",
+            section.examples,
+            section.examplePashto,
+            "✓"
+          )
+          : ""
+        }
+
+
+          <!-- ==========================================
+               POSITIVE
+               ========================================== -->
+
+          ${Array.isArray(section.positiveExamples) &&
+          section.positiveExamples.length
+          ? renderExampleGroup(
+            "Positive Examples",
+            "مثبتې بېلګې",
+            section.positiveExamples,
+            section.positiveExamplePashto,
+            "+",
+            "positive-section"
+          )
+          : ""
+        }
+
+
+          <!-- ==========================================
+               NEGATIVE
+               ========================================== -->
+
+          ${Array.isArray(section.negativeExamples) &&
+          section.negativeExamples.length
+          ? renderExampleGroup(
+            "Negative Examples",
+            "منفي بېلګې",
+            section.negativeExamples,
+            section.negativeExamplePashto,
+            "−",
+            "negative-section"
+          )
+          : ""
+        }
+
+
+          <!-- ==========================================
+               QUESTIONS
+               ========================================== -->
+
+          ${Array.isArray(section.questionExamples) &&
+          section.questionExamples.length
+          ? renderExampleGroup(
+            "Question Examples",
+            "د پوښتنو بېلګې",
+            section.questionExamples,
+            section.questionExamplePashto,
+            "?",
+            "question-section"
+          )
+          : ""
+        }
+
+
+          <!-- ==========================================
+               CONVERSATION
+               ========================================== -->
+
+          ${Array.isArray(section.conversationExamples) &&
+          section.conversationExamples.length
+          ? renderExampleGroup(
+            "Conversation Examples",
+            "د خبرو اترو بېلګې",
+            section.conversationExamples,
+            section.conversationExamplePashto,
+            "💬",
+            "conversation-section"
+          )
+          : ""
+        }
+
+        </div>
+
+      </article>
+    `;
+
+    }
+
+
+    /* =====================================================
+       PREVIOUS
+       ===================================================== */
+
+    function getPreviousLesson(index) {
+
+      if (index <= 0) {
+        return null;
+      }
+
+      return COURSE_LESSONS[index - 1];
+
+    }
+
+
+    /* =====================================================
+       NEXT
+       ===================================================== */
+
+    function getNextLesson(index) {
+
+      if (
+        index >=
+        COURSE_LESSONS.length - 1
+      ) {
+
+        return null;
+
+      }
+
+      return COURSE_LESSONS[index + 1];
+
+    }
+
+
+    /* =====================================================
+       RENDER LESSON
+       ===================================================== */
+
+    function renderLesson() {
+
+      const lesson =
+        getCurrentLesson();
+
+
+      if (!lesson) {
+
+        lessonPage.innerHTML = `
+        <div class="lesson-not-found">
+
+          <span class="eyebrow">
+            ERROR
+          </span>
+
+          <h1>
+            Lesson not found
+          </h1>
+
+          <p>
+            We could not find the lesson you requested.
+          </p>
+
+          <a
+            class="primary"
+            href="lesson.html?id=unit-1"
+          >
+            ← Back to Lessons
+          </a>
+
+        </div>
+      `;
+
+        return;
+
+      }
+
+
+      const lessonIndex =
+        COURSE_LESSONS.findIndex(
+          item => item.id === lesson.id
+        );
 
 
       const previousLesson =
-        lessonIndex > 0
-          ? LESSONS[lessonIndex - 1]
-          : null;
+        getPreviousLesson(
+          lessonIndex
+        );
 
 
       const nextLesson =
-        lessonIndex < COURSE_LESSONS.length - 1
-          ? LESSONS[lessonIndex + 1]
-          : null;
+        getNextLesson(
+          lessonIndex
+        );
 
 
       document.title =
@@ -321,222 +1109,198 @@
 
       lessonPage.innerHTML = `
 
-    <!-- HERO -->
+      <!-- ==========================================
+           HERO
+           ========================================== -->
 
-    <div class="lesson-hero">
+      <div class="lesson-hero">
 
-      <a
-        class="back-link"
-        href="lesson.html?id=unit-1"
-      >
-        ← Back to Lessons
-      </a>
+        <a
+          class="back-link"
+          href="lesson.html?id=unit-1"
+        >
+          ← Back to Lessons
+        </a>
 
-      <span class="eyebrow">
-        ${lesson.unit}
-      </span>
 
-      <h1>
-        ${lesson.title}
-      </h1>
+        <span class="eyebrow">
+          ${escapeHTML(lesson.unit)}
+        </span>
 
-      <p class="lesson-topic">
-        ${lesson.topic}
-      </p>
 
-      ${lesson.intro
-          ? `<p class="lesson-intro">
-              ${lesson.intro}
-            </p>`
+        <h1>
+          ${escapeHTML(lesson.title)}
+        </h1>
+
+
+        ${lesson.subtitle
+          ? `
+              <p class="lesson-topic">
+                ${escapeHTML(lesson.subtitle)}
+              </p>
+            `
           : ""
         }
 
-    </div>
 
-
-    <!-- LESSON SECTIONS -->
-
-    <div class="lesson-sections">
-
-      ${lesson.sections.map((section, sectionIndex) => `
-
-        <article class="lesson-section">
-
-          <div class="section-number">
-            ${String(sectionIndex + 1).padStart(2, "0")}
-          </div>
-
-          <div class="section-main">
-
-            <h2>
-              ${section.title}
-            </h2>
-
-
-            ${section.pashto
-            ? `
-                  <div
-                    class="section-pashto"
-                    dir="rtl"
-                  >
-                    ${section.pashto}
-                  </div>
-                `
-            : ""
-          }
-
-
-            ${section.rules && section.rules.length
-            ? `
-
-                  <div class="lesson-block">
-
-                    <h3>
-                      Grammar Rules
-                    </h3>
-
-                    <div class="rules-list">
-
-                      ${section.rules
-              .map(renderRule)
-              .join("")}
-
-                    </div>
-
-                  </div>
-
-                `
-            : ""
-          }
-
-
-            ${section.examples && section.examples.length
-            ? `
-
-                  <div class="lesson-block">
-
-                    <h3>
-                      Examples
-                    </h3>
-
-                    <div class="examples-list">
-
-                      ${section.examples
-              .map(renderExample)
-              .join("")}
-
-                    </div>
-
-                  </div>
-
-                `
-            : ""
-          }
-
-          </div>
-
-        </article>
-
-      `).join("")}
-
-    </div>
-
-
-    <!-- NAVIGATION -->
-
-    <div class="lesson-navigation">
-
-      ${previousLesson
+        ${lesson.topic
           ? `
-            <a
-              class="lesson-nav-card previous"
-              href="lesson.html?id=${previousLesson.id}"
-            >
+              <p class="lesson-topic">
+                ${escapeHTML(lesson.topic)}
+              </p>
+            `
+          : ""
+        }
 
-              <span>← Previous Lesson</span>
 
-              <strong>
-                ${previousLesson.title}
-              </strong>
+        ${lesson.intro
+          ? `
+              <p class="lesson-intro">
+                ${escapeHTML(lesson.intro)}
+              </p>
+            `
+          : ""
+        }
 
-            </a>
-          `
+      </div>
+
+
+      <!-- ==========================================
+           SECTIONS
+           ========================================== -->
+
+      <div class="lesson-sections">
+
+        ${Array.isArray(lesson.sections) &&
+          lesson.sections.length
+          ? lesson.sections
+            .map(renderSection)
+            .join("")
+          : `
+              <div class="no-lessons">
+                No lesson sections found.
+              </div>
+            `
+        }
+
+      </div>
+
+
+      <!-- ==========================================
+           NAVIGATION
+           ========================================== -->
+
+      <div class="lesson-navigation">
+
+        ${previousLesson
+          ? `
+              <a
+                class="lesson-nav-card previous"
+                href="lesson.html?id=${previousLesson.id}"
+              >
+
+                <span>
+                  ← Previous Lesson
+                </span>
+
+                <strong>
+                  ${escapeHTML(previousLesson.title)}
+                </strong>
+
+              </a>
+            `
           : `<div></div>`
         }
 
 
-      ${nextLesson
+        ${nextLesson
           ? `
-            <a
-              class="lesson-nav-card next"
-              href="lesson.html?id=${nextLesson.id}"
-            >
+              <a
+                class="lesson-nav-card next"
+                href="lesson.html?id=${nextLesson.id}"
+              >
 
-              <span>Next Lesson →</span>
+                <span>
+                  Next Lesson →
+                </span>
 
-              <strong>
-                ${nextLesson.title}
-              </strong>
+                <strong>
+                  ${escapeHTML(nextLesson.title)}
+                </strong>
 
-            </a>
-          `
+              </a>
+            `
           : `
-            <a
-              class="lesson-nav-card next"
-              href="../index.html#quiz"
-            >
+              <a
+                class="lesson-nav-card next"
+                href="../index.html#quiz"
+              >
 
-              <span>Finish Lessons →</span>
+                <span>
+                  Finish Lessons →
+                </span>
 
-              <strong>
-                Take the Quiz
-              </strong>
+                <strong>
+                  Take the Quiz
+                </strong>
 
-            </a>
-          `
+              </a>
+            `
         }
 
-    </div>
+      </div>
 
 
-    <!-- BOTTOM ACTIONS -->
+      <!-- ==========================================
+           ACTIONS
+           ========================================== -->
 
-    <div class="lesson-actions">
+      <div class="lesson-actions">
 
-      <a
-        class="primary"
-        href="../index.html#quiz"
-      >
-        Practice with Quiz →
-      </a>
+        <a
+          class="primary"
+          href="../index.html#quiz"
+        >
+          Practice with Quiz →
+        </a>
 
-      <a
-        class="secondary"
-        href="lesson.html?id=unit-1"
-      >
-        All Lessons
-      </a>
 
-    </div>
+        <a
+          class="secondary"
+          href="lesson.html?id=unit-1"
+        >
+          All Lessons
+        </a>
 
-  `;
+      </div>
+
+    `;
 
     }
 
 
-    // --------------------------------------------------
-    // SEARCH
-    // --------------------------------------------------
+    /* =====================================================
+       SEARCH
+       ===================================================== */
 
-    lessonSearch.addEventListener("input", () => {
+    lessonSearch.addEventListener(
+      "input",
+      () => {
 
-      renderLessonList(lessonSearch.value);
+        renderLessonList(
+          lessonSearch.value
+        );
 
-    });
+      }
+    );
 
 
+    /* =====================================================
+       START
+       ===================================================== */
 
     renderLessonList();
+
     renderLesson();
 
   </script>
